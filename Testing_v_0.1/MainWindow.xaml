@@ -1,0 +1,53 @@
+﻿<Window x:Class="Testing_v_0._1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Testing_v_0._1"
+        mc:Ignorable="d"
+        Title="Тестирование" Height="500" Width="850
+        " ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Canvas>
+        <Canvas x:Name="MianWindowCanvas" d:IsHidden="True">
+            <Grid>
+                <Button x:Name="Topic1" Click="Topic1_Start_OnClick" DataContext="{Binding Path = [0]}" Content="{Binding Path = Title}" Height="81"  Width="234" Margin="48,0,-38,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Height"/>
+                <Button x:Name="Topic2" Click="Topic2_Start_OnClick" DataContext="{Binding Path = [1]}" Content="{Binding Path = Title}" Height="81"  Width="244" HorizontalAlignment="Right" Margin="0,0,-316,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
+                <Button x:Name="Topic3" DataContext="{Binding Path = [2]}" Content="{Binding Path = Title}" Height="81"  Width="217" HorizontalAlignment="Right" Margin="0,0,-563.5,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
+            </Grid>
+        </Canvas>
+
+        <Canvas x:Name="TopicCanvas" d:IsHidden="True">
+            <Grid>
+                <Button x:Name="TopicSlideShow" DataContext="{Binding}" Content="{Binding Path = SlideShow.Title}" Click="TopicStartSlideShow_OnClick" Margin="0,0,-76,-287" HorizontalAlignment="Right" Height="158" VerticalAlignment="Bottom" Width="308" />
+                <Button x:Name="TopicTest" DataContext="{Binding}" Content="{Binding Path = Test.Title}" Click="TopicStartTest_OnClick" Margin="470,161,-523,-287" />
+                <Button x:Name="ToMainCanvas" Click="ToMainCanvas_OnClick" Content="Назад" Height="33" Width="270" Margin="523,386,-523,-387"/>
+            </Grid>
+        </Canvas>
+        <Canvas x:Name="SlideShowCanvas" d:IsHidden="True">
+            <Grid>
+
+                <TextBlock x:Name="TopicSlideShow1" DataContext="{Binding}" Text="{Binding}" Margin="0,0,-790.5,-217.5" HorizontalAlignment="Right" Height="157.96" VerticalAlignment="Bottom" Width="727" />
+                <Button x:Name="NextSlideButton" Content="Следующее...." Click="NextSlideButton_OnClick" Margin="468,332.54,-790.5,-409.5" />
+
+            </Grid>
+        </Canvas>
+
+        <Canvas x:Name="TestCanvas">
+            <Grid>
+                <TextBlock x:Name="QuestionTextBlock"  Height="96" TextWrapping="Wrap" Text="{Binding Path = Question}" Margin="57,0,-756,-142" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
+
+                <Button x:Name="Answer1" Content="{Binding Path = AnswersToDisplay[0]}" Height="63" Margin="132,0,-621,-238" VerticalAlignment="Bottom"/>
+                <Button x:Name="Answer2" Content="{Binding Path = AnswersToDisplay[1]}" Height="63" Margin="132,0,-621,-331" VerticalAlignment="Bottom"/>
+                <Button x:Name="Answer3" Content="{Binding Path = AnswersToDisplay[2]}" Height="63" Margin="132,0,-621,-430" VerticalAlignment="Bottom"/>
+
+            </Grid>
+        </Canvas>
+
+        <Canvas x:Name="ResultCanvas" d:IsHidden="True">
+            <Grid />
+        </Canvas>
+
+
+    </Canvas>
+
+</Window>
