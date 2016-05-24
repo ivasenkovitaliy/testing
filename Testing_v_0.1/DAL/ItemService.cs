@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Testing_v_0._1.BO;
 using Testing_v_0._1.Models;
 
@@ -14,6 +16,14 @@ namespace Testing_v_0._1.DAL
 
         public ItemService()
         {
+            using (StreamReader r = new StreamReader("topics.json"))
+            {
+                string json = r.ReadToEnd();
+                Topics = JsonConvert.DeserializeObject<List<Topic>>(json);
+            }
+
+
+            /*
             Topics = new List<Topic>();
 
             var topic1 = new Topic
@@ -44,7 +54,7 @@ namespace Testing_v_0._1.DAL
                             Id = 1,
                             Question = "Первый вопрос",
 
-                            CoorectAnswer = new Answer {Id = 7, IsCorrect = true, Content = "правильный"},
+                            CorrectAnswer = new Answer {Id = 7, IsCorrect = true, Content = "правильный"},
 
                             WrongAnswers = new List<Answer>
                             {
@@ -58,7 +68,7 @@ namespace Testing_v_0._1.DAL
                             Id = 2,
                             Question = "второй вопрос",
 
-                            CoorectAnswer = new Answer {Id = 8, IsCorrect = true, Content = "правильный"},
+                            CorrectAnswer = new Answer {Id = 8, IsCorrect = true, Content = "правильный"},
 
                             WrongAnswers = new List<Answer>
                             {
@@ -72,7 +82,7 @@ namespace Testing_v_0._1.DAL
                             Id = 3,
                             Question = "третий вопрос",
 
-                            CoorectAnswer = new Answer {Id = 9, IsCorrect = true, Content = "правильный"},
+                            CorrectAnswer = new Answer {Id = 9, IsCorrect = true, Content = "правильный"},
 
                             WrongAnswers = new List<Answer>
                             {
@@ -114,7 +124,7 @@ namespace Testing_v_0._1.DAL
                             Id = 4,
                             Question = "первый вопрос",
 
-                            CoorectAnswer = new Answer {Id = 13, IsCorrect = true, Content = "правильный"},
+                            CorrectAnswer = new Answer {Id = 13, IsCorrect = true, Content = "правильный"},
 
                             WrongAnswers = new List<Answer>
                             {
@@ -128,7 +138,7 @@ namespace Testing_v_0._1.DAL
                             Id = 5,
                             Question = "второй вопрос",
 
-                            CoorectAnswer = new Answer {Id = 17, IsCorrect = true, Content = "правильный"},
+                            CorrectAnswer = new Answer {Id = 17, IsCorrect = true, Content = "правильный"},
 
                             WrongAnswers = new List<Answer>
                             {
@@ -142,7 +152,7 @@ namespace Testing_v_0._1.DAL
                             Id = 6,
                             Question = "третий вопрос",
 
-                            CoorectAnswer = new Answer {Id = 21, IsCorrect = true, Content = "правильный"},
+                            CorrectAnswer = new Answer {Id = 21, IsCorrect = true, Content = "правильный"},
 
                             WrongAnswers = new List<Answer>
                             {
@@ -156,7 +166,7 @@ namespace Testing_v_0._1.DAL
             };
 
             Topics.Add(topic1);
-            Topics.Add(topic2);
+            Topics.Add(topic2); */
         }
 
 

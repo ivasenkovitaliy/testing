@@ -12,7 +12,7 @@
             <Grid>
                 <Button x:Name="Topic1" Click="Topic1_Start_OnClick" DataContext="{Binding Path = [0]}" Content="{Binding Path = Title}" Height="81"  Width="234" Margin="48,0,-38,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Height"/>
                 <Button x:Name="Topic2" Click="Topic2_Start_OnClick" DataContext="{Binding Path = [1]}" Content="{Binding Path = Title}" Height="81"  Width="244" HorizontalAlignment="Right" Margin="0,0,-316,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
-                <Button x:Name="Topic3" DataContext="{Binding Path = [2]}" Content="{Binding Path = Title}" Height="81"  Width="217" HorizontalAlignment="Right" Margin="0,0,-563.5,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
+                <Button x:Name="Topic3" Click="Topic3_Start_OnClick" DataContext="{Binding Path = [2]}" Content="{Binding Path = Title}" Height="81"  Width="217" HorizontalAlignment="Right" Margin="0,0,-563.5,-142" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
             </Grid>
         </Canvas>
 

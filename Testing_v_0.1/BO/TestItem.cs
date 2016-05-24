@@ -10,9 +10,8 @@ namespace Testing_v_0._1.BO
     {
         public int Id { get; set; }
         public string Question { get; set; }
+        public Answer CorrectAnswer { get; set; }
         public List<Answer> WrongAnswers { get; set; }
-        public Answer CoorectAnswer { get; set; }
-        //public List<Answer> AnswersToDisplay { get; set; }
         public List<Answer> AnswersToDisplay
         {
             get
@@ -20,12 +19,12 @@ namespace Testing_v_0._1.BO
                 Random rnd = new Random();
 
                 var answers = new List<Answer>();
-                answers.Add(CoorectAnswer);
+                answers.Add(CorrectAnswer);
 
                 var wrongAnswers = WrongAnswers.OrderBy(x => rnd.Next()).Take(2);
                 answers.AddRange(wrongAnswers);
 
-                return answers.OrderBy(x => rnd.Next()).ToList();
+                return answers.OrderBy(x => rnd.Next()).Take(3).ToList();
             }
         }
 

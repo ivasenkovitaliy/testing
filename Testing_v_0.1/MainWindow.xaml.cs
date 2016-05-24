@@ -46,6 +46,11 @@ namespace Testing_v_0._1
             ShowTopic(sender);
         }
 
+        private void Topic3_Start_OnClick(object sender, RoutedEventArgs e)
+        {
+            ShowTopic(sender);
+        }
+
         private void TopicStartSlideShow_OnClick(object sender, RoutedEventArgs e)
         {
             Thread.Sleep(350);
@@ -170,5 +175,7 @@ namespace Testing_v_0._1
 
             DataContext = ItemService.GetTopics();
         }
+
+
     }
 }
