@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using Testing_v_0._1.BO;
 using Testing_v_0._1.DAL;
+using Testing_v_0._1.Models;
 
 namespace Testing_v_0._1
 {
@@ -30,6 +33,7 @@ namespace Testing_v_0._1
             TopicCanvas.Visibility = Visibility.Hidden;
             SlideShowCanvas.Visibility = Visibility.Hidden;
             TestCanvas.Visibility = Visibility.Hidden;
+            ResultCanvas.Visibility = Visibility.Hidden;
         }
         
         private void Topic1_Start_OnClick(object sender, RoutedEventArgs e)
@@ -76,6 +80,12 @@ namespace Testing_v_0._1
         private void TopicStartTest_OnClick(object sender, RoutedEventArgs e)
         {
             Thread.Sleep(350);
+
+            StartTest(sender);
+        }
+
+        private void StartTest(object sender)
+        {
             CurrentTopic = (Topic)(sender as Button).DataContext;
 
             TopicCanvas.Visibility = Visibility.Hidden;
@@ -125,6 +135,8 @@ namespace Testing_v_0._1
 
         private void CalculateAnswer(object sender)
         {
+            Thread.Sleep(400);
+
             var answer = (Answer)(sender as Button).DataContext;
             _testItemEnumerator.Current.Answered = answer;
 
@@ -135,10 +147,28 @@ namespace Testing_v_0._1
             else
             {
                 var totalQuestions = CurrentTopic.Test.Items.Count;
-                var wrongAnswers = CurrentTopic.Test.Items.Count(x => !x.Answered.IsCorrect);
 
-                //StartTest();
+                var resultModel = new ResultModel
+                {
+                    CorrectAnswers = CurrentTopic.Test.Items.Count(x => x.Answered.IsCorrect),
+                    WrongAnswers = CurrentTopic.Test.Items.Count(x => !x.Answered.IsCorrect)
+                };
+
+                TestCanvas.Visibility = Visibility.Hidden;
+                ResultCanvas.Visibility = Visibility.Visible;
+
+                DataContext = resultModel;
             }
+        }
+
+        private void Return_To_Main_Button_OnClick(object sender, RoutedEventArgs e)
+        {
+            Thread.Sleep(400);
+
+            ResultCanvas.Visibility = Visibility.Hidden;
+            MianWindowCanvas.Visibility = Visibility.Visible;
+
+            DataContext = ItemService.GetTopics();
         }
     }
 }

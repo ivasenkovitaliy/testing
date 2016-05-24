@@ -32,19 +32,28 @@
             </Grid>
         </Canvas>
 
-        <Canvas x:Name="TestCanvas">
+        <Canvas x:Name="TestCanvas" d:IsHidden="True">
             <Grid>
                 <TextBlock x:Name="QuestionTextBlock"  Height="96" TextWrapping="Wrap" Text="{Binding Path = Question}" Margin="57,0,-756,-142" VerticalAlignment="Bottom" d:LayoutOverrides="VerticalAlignment"/>
 
-                <Button x:Name="Answer1" Content="{Binding Path = AnswersToDisplay[0]}" Height="63" Margin="132,0,-621,-238" VerticalAlignment="Bottom"/>
-                <Button x:Name="Answer2" Content="{Binding Path = AnswersToDisplay[1]}" Height="63" Margin="132,0,-621,-331" VerticalAlignment="Bottom"/>
-                <Button x:Name="Answer3" Content="{Binding Path = AnswersToDisplay[2]}" Height="63" Margin="132,0,-621,-430" VerticalAlignment="Bottom"/>
+                <Button x:Name="Answer1" DataContext = "{Binding Path = AnswersToDisplay[0]}" Content="{Binding Path = Content}" Click="Answer1_OnClick" Height="63" Margin="132,0,-621,-238" VerticalAlignment="Bottom"/>
+                <Button x:Name="Answer2" DataContext = "{Binding Path = AnswersToDisplay[1]}" Content="{Binding Path = Content}" Click="Answer2_OnClick" Height="63" Margin="132,0,-621,-331" VerticalAlignment="Bottom"/>
+                <Button x:Name="Answer3" DataContext = "{Binding Path = AnswersToDisplay[2]}" Content="{Binding Path = Content}" Click="Answer3_OnClick" Height="63" Margin="132,0,-621,-430" VerticalAlignment="Bottom"/>
 
             </Grid>
         </Canvas>
 
-        <Canvas x:Name="ResultCanvas" d:IsHidden="True">
-            <Grid />
+        <Canvas x:Name="ResultCanvas">
+            <Grid>
+                <Button x:Name="button" Click="Return_To_Main_Button_OnClick" Height="63.768" Margin="286.855,0,-560.768,-427.623" VerticalAlignment="Bottom" Content="На главную"/>
+                
+                <Label x:Name="label1" Content="Правильных ответов" Margin="208.696,0,-337.682,-137.681" Height="25.96" VerticalAlignment="Bottom"/>
+                <Label x:Name="label2" Content="Неправильных ответов" Margin="208.696,0,-362.682,-184.406" Height="25.96" VerticalAlignment="Bottom"/>
+
+                <TextBlock x:Name="CorrectAnswersTextBlock" Height="33.333" TextWrapping="Wrap" Text="{Binding Path = CorrectAnswers}" Width="247.826" HorizontalAlignment="Right" Margin="0,0,-704.246,-146.054" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="WrongAnswersTextBlock" Height="33.333" TextWrapping="Wrap" Text="{Binding Path = WrongAnswers}" Width="247.826" HorizontalAlignment="Right" Margin="0,0,-704.246,-196.779" VerticalAlignment="Bottom"/>
+
+            </Grid>
         </Canvas>
 
 
